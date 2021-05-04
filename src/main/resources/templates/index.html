@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Liste Theme</title>
+	</head>
+	<body>
+		<h1>Liste Theme</h1>
+		<table>
+			<thead>
+				<tr>ID</tr>
+			</thead>
+			<tbody>
+				<tr th:each="theme : ${themes}">
+					<td th:text="${theme.uuid}">uuid</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
