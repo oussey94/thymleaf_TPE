@@ -11,17 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.springframework.lang.Nullable;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity @Data @NoArgsConstructor
 public class Theme {
+	public class services {
+
+	}
+
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
 	private String uuid;
 	
 	@Column(nullable = false)
@@ -31,7 +33,9 @@ public class Theme {
 	
 	private String description;
 	
-	@ManyToOne
+	private int weight;
+	
+	@ManyToOne 
 	private Theme parent;
 	
 	@OneToMany(mappedBy = "parent")
