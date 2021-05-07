@@ -24,8 +24,8 @@ public class Demo1Application implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		Theme tm1= themeService.addNewTheme(new Theme(null,"bushh","2015GZ" ,"mbooo","descr", 23,null, new ArrayList<>()));
-		themeService.addNewTheme(new Theme(null,"bushh","2015GZ" ,"mbooo","descr", 23,tm1, new ArrayList<>()));
-		themeService.addNewTheme(new Theme(null,"bushh","2015GZ" ,"mbooo","descr", 23,tm1, new ArrayList<>()));
+		themeService.addNewTheme(new Theme(null,"mor","2015GZ" ,"mbodjsech","descr", 11,tm1, new ArrayList<>()));
+		themeService.addNewTheme(new Theme(null,"ndiaye","2015GZ" ,"mboommmmmmmmmm","descr", 44,tm1, new ArrayList<>()));
 		
 		//themeRepository.save(new Theme("bushConsttt", new ArrayList<>()));
 		//themeRepository.save(new Theme("bushh234567", new ArrayList<>()));

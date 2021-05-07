@@ -35,11 +35,14 @@
                              <td th:text="${theme.name}"></td>
                              <td th:text="${theme.description}"></td>
                              <td th:text="${theme.weight}"></td>
+                             <td><a th:href="@{/getUpdateTheme/{id}(id=${theme.id})}">Edit</a></td>
+                             <td><a th:href="@{/deleteTheme/{id}(id=${theme.id})}">Delete</a></td>
                          </tr>
                    </tbody>
                 </table>
              </div>
            </div>
+           <p><a href="/addTheme">Ajoutez un nouveau Theme</a></p>
 
         </div>
     </div>
