@@ -8,44 +8,29 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import iad.istudy.thematic.entities.Theme;
-import iad.istudy.thematic.repositories.ThemeRepository;
+
+import iad.istudy.thematic.services.ThemeService;
 
 @SpringBootApplication
 public class Demo1Application implements CommandLineRunner{
 	@Autowired
-	private ThemeRepository themeRepo;
-	
+	private ThemeService themeService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Demo1Application.class, args);
 	}
 
-	public Theme addThemeTest(String code, String name, String description, int weight, String code_parent) {
-		
-		Theme theme = new Theme();
-		
-		theme.setCode(code);
-		theme.setName(name);
-		theme.setDescription(description);
-		theme.setWeight(weight);
-		
-		if(code_parent != null)
-			theme.setParent(themeRepo.findByCode(code_parent));
-	
-		return theme;
-	}
-	
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		Theme tm1= themeService.addNewTheme(new Theme(null,"bushh","2015GZ" ,"mbooo","descr", 23,null, new ArrayList<>()));
+		themeService.addNewTheme(new Theme(null,"bushh","2015GZ" ,"mbooo","descr", 23,tm1, new ArrayList<>()));
+		themeService.addNewTheme(new Theme(null,"bushh","2015GZ" ,"mbooo","descr", 23,tm1, new ArrayList<>()));
 		
-		themeRepo.save(addThemeTest("FEATURE", "Caractéristiques", "Caractéristiques", 1, null));
-		themeRepo.save(addThemeTest("DYNAMIC", "Dynamique territoriale", "Dynamique territoriale", 2, "FEATURE"));
-		themeRepo.save(addThemeTest("THERPRR", "THERPRR territoriale", "THERPRR territoriale", 5, "DYNAMIC"));
-		
-	
-		 
+		//themeRepository.save(new Theme("bushConsttt", new ArrayList<>()));
+		//themeRepository.save(new Theme("bushh234567", new ArrayList<>()));
+		//themeRepository.save(new Theme("bushh021", new ArrayList<>()));
+		//themeRepository.save(new Theme("bushhZoneCap", new ArrayList<>()));
 		
 	}
-
 }

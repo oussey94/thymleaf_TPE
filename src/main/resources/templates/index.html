@@ -1,21 +1,53 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8"/>
-		<title>Liste Theme</title>
-	</head>
-	<body>
-		<h1>Liste Theme</h1>
-		<table>
-			<thead>
-				<tr>ID</tr>
-			</thead>
-			<tbody>
-				<tr th:each="theme : ${themes}">
-					<td th:text="${theme.uuid}">uuid</td>
-				</tr>
-			</tbody>
-		</table>
-	</body>
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf - Bootstrap WebJars</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        
+            <div th:switch="${themes}">
+                  <h2 th:case="null"> pas de théme !</h2>
+              <div th:case="*">
+                   <h2> Les Themes </h2>
+                 <table>
+                    <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>UUID</th>
+                          <th>CODE</th>
+                          <th>NAME</th>
+                          <th>DESCRIPTION</th>
+                          <th>WEIGHT</th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                         <tr th:each="theme : ${themes}">
+                             <td th:text="${theme.id}"></td>
+                             <td th:text="${theme.uuid}"></td>
+                             <td th:text="${theme.code}"></td>
+                             <td th:text="${theme.name}"></td>
+                             <td th:text="${theme.description}"></td>
+                             <td th:text="${theme.weight}"></td>
+                         </tr>
+                   </tbody>
+                </table>
+             </div>
+           </div>
+
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+</body>
 </html>

@@ -1,6 +1,4 @@
 package iad.istudy.thematic.entities;
-
-import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -11,22 +9,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity @Data @NoArgsConstructor
+@Entity @Data @NoArgsConstructor @AllArgsConstructor
 public class Theme {
-	public class services {
-
-	}
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
 	private String uuid;
 	
-	@Column(nullable = false)
 	private String name;
 	
 	private String code;
@@ -41,9 +35,4 @@ public class Theme {
 	@OneToMany(mappedBy = "parent")
 	private Collection<Theme> children;
 	
-	public Theme(String uuid, Collection<Theme> children) {
-		super();
-		this.uuid = uuid;
-		this.children = new ArrayList<>();
-	}
 }
