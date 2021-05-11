@@ -1,6 +1,7 @@
 package iad.istudy.thematic.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,7 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import iad.istudy.thematic.entities.Theme;
 import iad.istudy.thematic.services.ThemeService;
 
@@ -18,9 +19,13 @@ public class ThemeController {
 	private ThemeService themeService;
 	
 	@GetMapping("/index")
-	public String allTheme(Model model) {
+	public String allTheme(Model model, @RequestParam(name = "page", defaultValue = "0") int page, @RequestParam(name = "size", defaultValue = "4") int size) {
 		
-		model.addAttribute("themes", themeService.tousLesThemes());
+		Page<Theme> tm = themeService.tousLesThemesParPage(page, size);
+		
+		model.addAttribute("themes", tm);
+	    model.addAttribute("pages", new int [tm.getTotalPages()]);
+	    model.addAttribute("pageCourant", page);
 		
 		return "index";
 	}
@@ -36,8 +41,14 @@ public class ThemeController {
 	}
 	
 	@PostMapping("/addTheme")
-	public String addTheme(@Validated Theme theme, BindingResult result, Model model) {
-	    
+	public String addTheme(@Validated Theme theme, @RequestParam(value = "parent_code", required = false) String parent_codsse, BindingResult result, Model model) {
+		
+	  
+		
+		;
+		// System.out.println("*********** "+parent_codsse);
+		theme.setParent(themeService.getThemeParCode(parent_codsse));
+		
 		themeService.addNewTheme(theme);
 		/*
 		System.out.println("uuid:"+theme.getUuid());

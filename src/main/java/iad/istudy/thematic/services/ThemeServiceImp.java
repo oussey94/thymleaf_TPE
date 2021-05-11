@@ -3,6 +3,8 @@ package iad.istudy.thematic.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import iad.istudy.thematic.entities.Theme;
@@ -55,6 +57,12 @@ public class ThemeServiceImp implements ThemeService {
 	public Theme getThemeParCode(String code) {
 		// TODO Auto-generated method stub
 		return themeRepository.findByCode(code);
+	}
+
+	@Override
+	public Page<Theme> tousLesThemesParPage(int page, int size) {
+		// TODO Auto-generated method stub
+		return themeRepository.findAll(PageRequest.of(page, size));
 	}
 
 

@@ -29,7 +29,7 @@ public class Theme {
 	
 	private int weight;
 	
-	@ManyToOne 
+	@ManyToOne		 
 	private Theme parent;
 	
 	@OneToMany(mappedBy = "parent")
