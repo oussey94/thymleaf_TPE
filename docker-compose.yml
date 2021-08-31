@@ -1,0 +1,33 @@
+version: '3'
+services:
+    app:
+        image: docker-thematic-spring-mb:latest
+        build:
+           context: .
+        container_name: app
+        depends_on:
+            - db
+        ports:
+            - 9090:8080
+        networks:
+            - mb-spring
+        environment:
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+            - SPRING_DATASOURCE_USERNAME=postgres
+            - SPRING_DATASOURCE_PASSWORD=passer
+            - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+           
+
+    db:
+        image: postgres:13.1-alpine
+        ports:
+            - 5432:5432
+        networks:
+            - mb-spring
+        container_name: db
+        environment: 
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=passer
+            
+networks:
+  mb-spring:

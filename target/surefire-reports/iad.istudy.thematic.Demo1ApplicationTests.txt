@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: iad.istudy.thematic.Demo1ApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.766 s - in iad.istudy.thematic.Demo1ApplicationTests

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Spring Boot Thymeleaf - Bootstrap WebJars</title>
+
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<div class="container card">
+    <div>
+      <h4>Ajouter Theme:</h4>
+      <hr>
+    </div>
+    <div class="card shadow mb-4 ">
+        <div class="card-body">
+        
+          <form action="#" th:action="@{/addTheme}" th:object="${theme}" method="post">
+          
+             <div class="form-group col-sm-4 col-md-4 col-lg-4">
+                 <label for="uuid"> UUID</label>
+                 <input type="text" th:field="*{uuid}" id="uuid" placeholder="uuid" class="form-control">
+             </div>
+          
+            <div class="form-group col-sm-4 col-md-4 col-lg-4">
+                 <label for="code">CODE</label>
+                 <input type="text" th:field="*{code}" id="code" placeholder="code" class="form-control">
+            </div>
+            <div class="form-group col-sm-4 col-md-4 col-lg-4">
+                 <label for="name">Nom</label>
+                 <input type="text" th:field="*{name}" id="name" placeholder="name" class="form-control">
+            </div>
+    
+            <div class="form-group col-sm-4 col-md-4 col-lg-4">
+                 <label for="description">Decription</label>
+                 <input type="text" th:field="*{description}" id="description" placeholder="description" class="form-control">
+            </div>
+     
+            <div class="form-group col-sm-4 col-md-4 col-lg-4">
+                 <label for="weight">Weight</label>
+                 <input type="number" th:field="*{weight}" id="weight" placeholder="weight" class="form-control">
+            </div>
+            
+            <div class="input-group mb-3 col-sm-4 col-md-4 col-lg-4">
+                
+                 <select class="form-control" id="parent" th:name="parent_code">
+               
+                     <option th:each="theme : ${themes}"
+                             th:value="${theme.code}"
+                             th:text="${theme.code}">
+                     </option>
+                     
+                 </select>
+          </div>
+            
+     
+            <div class="mt-2">
+                  <input type="submit" value="Add User" class="btn btn-primary" >
+           </div>
+         </form>
+        </div>
+    </div>
+
+
+</div>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+
+</body>
+</html>
